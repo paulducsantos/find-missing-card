@@ -243,7 +243,7 @@ deck.forEach(sort);
 
 // console.log(sortedDeck);
 //go through each array to see which one has 12 elements because 1 card is missing
-var getShortestArray = function(cards) {
+var findShortestArrayThenMissingCard = function(cards) {
   for(var i=0; i<cards.length; i++) {
     if (cards[i].length === 12) {
       findMissing(cards[i]);
@@ -265,4 +265,4 @@ var findMissing = function(cards) {
   }
 }
 
-getShortestArray(sortedDeck);
+findShortestArrayThenMissingCard(sortedDeck);
