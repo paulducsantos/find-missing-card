@@ -104,10 +104,10 @@ var deck = [
     number: 7,
     suit: 'diamonds'
   },
-  {
-    number: 7,
-    suit: 'hearts'
-  },
+  // {
+  //   number: 7,
+  //   suit: 'hearts'
+  // },
   {
     number: 7,
     suit: 'clubs'
@@ -210,11 +210,14 @@ var deck = [
   }
 ];
 
+//call my variables
 var spades = [];
 var diamonds = [];
 var hearts = [];
 var clubs = [];
+var sortedDeck = [spades, diamonds, hearts, clubs];
 
+//sort the deck by suit
 var sort = function(element, index, array) {
   switch (element.suit) {
     case 'spades':
@@ -235,8 +238,31 @@ var sort = function(element, index, array) {
   }
 }
 
+//run the sort function for each element to sort into the suit variables
 deck.forEach(sort);
-console.log(spades);
-console.log(diamonds);
-console.log(hearts);
-console.log(clubs);
+
+// console.log(sortedDeck);
+//go through each array to see which one has 12 elements because 1 card is missing
+var getShortestArray = function(cards) {
+  for(var i=0; i<cards.length; i++) {
+    if (cards[i].length === 12) {
+      findMissing(cards[i]);
+    }
+  } 
+}
+
+var findMissing = function(cards) {
+  for (var i=0; i<13; i++) {
+    debugger;
+    if (cards[i].number != i+1) {
+      var missingNumber = i+1;
+      console.log('The missing number is ' +  missingNumber +  ' of ' +  cards[i].suit);
+      return;
+    }
+    else if(i===12) {
+      console.log('The missing card is 13 of ' + cards[i-1].suit);
+    }
+  }
+}
+
+getShortestArray(sortedDeck);
